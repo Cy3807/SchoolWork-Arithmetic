@@ -1,0 +1,66 @@
+陈鹏旭的补做复核任务
+
+成员：陈鹏旭，3124004200。
+任务范围：少量人工验算、命令行错误提示、批改统计、运行说明复核。
+建议安排约 20 至 30 分钟，实际耗时自行记录。这是待执行任务，不是已完成记录。
+
+准备
+
+拿到源码包并解压，在终端进入包含 Myapp.py 的项目目录。
+Mac 使用下面的 python3 命令；Windows 安装 Python 后把 python3 换成 py -3。
+核心程序不需要安装第三方依赖。
+
+1. 手工核算三道题
+
+查看 examples/Exercises.txt，先独立计算第 3、4、6 题，再对照 examples/Answers.txt。
+不要只比较两份文件是否存在，要确认整数、带分数和零结果的数值正确。
+记录：第 3 题手算结果____；第 4 题____；第 6 题____。
+对照结果：____。
+
+2. 检查正常生成
+
+python3 Myapp.py -n 10 -r 10 --seed 20261009 --output-dir manual-run/partner
+
+确认输出已生成 10 道题，目录内有 Exercises.txt 和 Answers.txt，各为 10 行。
+
+3. 检查参数报错
+
+python3 Myapp.py -n 10
+python3 Myapp.py -n 0 -r 10
+python3 Myapp.py -n 10 -r 0
+
+预期：第一条显示帮助并提示缺少 -r，后两条拒绝无效参数；均不应出现 Python Traceback。
+记录实际提示：____。
+
+4. 检查批改与错误题号
+
+python3 Myapp.py -e manual-run/partner/Exercises.txt -a manual-run/partner/Answers.txt --output-dir manual-run/partner
+
+预期 Correct: 10、Wrong: 0。
+在文件管理器里复制 manual-run/partner/Answers.txt 为 StudentAnswers.txt。
+用纯文本编辑器把第 2、5 行题号后的答案改成 999999，保存，不改变题号。
+
+python3 Myapp.py -e manual-run/partner/Exercises.txt -a manual-run/partner/StudentAnswers.txt --output-dir manual-run/partner
+
+预期：Correct: 8 (1, 3, 4, 6, 7, 8, 9, 10)，Wrong: 2 (2, 5)。
+保存一张显示运行命令与批改结果的截图。
+
+5. 复核 README
+
+确认 README 的生成、批改命令能够按说明执行，三个输出文件名称一致。
+记录需要修改或不易理解的地方；如果没有发现问题，写明本次检查范围及结果，不写“整个程序没有问题”。
+
+复核记录（执行后填写）
+
+执行日期：____。
+开始时间：____；结束时间：____；实际投入分钟数：____。
+系统与 Python 版本：____。
+三道人工验算：____。
+参数异常提示：____。
+全对批改结果：____。
+混合错误答案批改结果：____。
+README 复核结果：____。
+发现的问题或建议：____。
+截图位置：____。
+
+把实际结果交给陈昱绰整理到博客，并核对与你有关的分工和互评文字。
