@@ -1,11 +1,12 @@
 {
-  "run_at": "2026-10-09T11:01:12+08:00",
+  "run_at": "2026-10-09T11:04:45+08:00",
   "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
   "platform": "macOS-27.0-arm64-arm-64bit",
-  "tests_run": 37,
-  "passed": 37,
-  "elapsed_seconds": 8.554552542,
+  "tests_run": 38,
+  "passed": 38,
+  "elapsed_seconds": 8.602186709,
   "passed_tests": [
+    "test_quiz.CommandLineTests.test_ascii_environment_still_prints_chinese",
     "test_quiz.CommandLineTests.test_capacity_failure_does_not_overwrite_existing_files",
     "test_quiz.CommandLineTests.test_default_current_directory_and_grading",
     "test_quiz.CommandLineTests.test_invalid_cli_parameters",
@@ -46,5 +47,13 @@
   ],
   "failures": [],
   "errors": [],
-  "successful": true
+  "successful": true,
+  "source_sha256": {
+    "Myapp.py": "d5e259c9b1553439d2d0250389d970734c281c763c7ef43e02c0ea51e9357e7a",
+    "quiz/__init__.py": "2de1da423f404c65cbe6793693e01bef1ad4a30160c0667806a9d4151df7e5e5",
+    "quiz/files.py": "6bfc1f7e13efa81edd23ca83bc62907d13c20d4d7700b39fc048447ffb60052d",
+    "quiz/generate.py": "66cc2528e0cd135f32f04f26dd5fb56fe94df2a159010057e2c5094891ba7731",
+    "quiz/model.py": "0845fccdcb23ac283023e2145bd2eb204d4e16f4efbc8c655966165383a5b742",
+    "tests/test_quiz.py": "4eec5b2679ebb69486312b28e2b82d80db02612100f06a8a29b59bc746efe9e2"
+  }
 }

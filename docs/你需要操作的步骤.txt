@@ -1,0 +1,132 @@
+小学四则运算项目补做操作步骤
+
+程序、测试、基准、性能图、博客技术正文和 Git 仓库已由 Codex 协助准备。
+你需要补充个人信息、实际经历，亲自运行并审核，再完成老师认可的补交。
+
+1. 先确认补交方式
+
+原作业页面已经截止，截止时间为 2026-09-22 23:59。
+向老师确认：是否接受本次补交；允许独立补做还是必须结对；通过重新开放作业、邮件或其他渠道提交。
+这一步由你联系老师，系统不会代你发送消息。
+
+2. 填写身份与实际工作记录
+
+打开 docs/博客草稿.md，搜索“待填写”。
+填写本人姓名、学号，以及搭档姓名、学号。
+按实际情况填写 PSP 的预估和实际时间；如果没有事前估时，说明“未事前估计”，不要填别人的数字。
+填写真实分工、结对感受和双方建议。没有搭档且老师允许独立补做时，删去结对段落并改为独立补做说明。
+人工性能分析耗时填你实际阅读、运行、分析和修改的时间；不要使用程序运行的零点几秒代替。
+保留与实际情况一致的工具协助说明，并确认符合课程要求。
+
+3. 在你的 Mac 上亲自运行
+
+按 Command+空格，搜索“终端”并打开。
+复制下面一行进入项目目录：
+
+cd '/Users/cy3807/Documents/Vibe Coding/SchoolWork/Daily/软件工程结对项目'
+
+逐条运行以下命令：
+
+python3 Myapp.py -n 10 -r 10 --seed 20261009 --output-dir manual-run/ten
+python3 Myapp.py -e manual-run/ten/Exercises.txt -a manual-run/ten/Answers.txt --output-dir manual-run/ten
+python3 Myapp.py -n 10000 -r 10 --seed 20261009 --output-dir manual-run/large
+python3 tools/check.py
+
+第一条：确认提示已生成 10 道题。
+第二条：确认 Correct: 10、Wrong: 0。
+第三条：确认已生成 10000 道题。
+第四条：确认全部测试通过、最后显示 OK；最新结果会写入 reports/tests.txt 和 reports/tests.json。
+用文本编辑器打开 manual-run/ten/Exercises.txt 和 Answers.txt，检查题目、答案及带分数格式。
+这些命令已按当前电脑的 Python 3 环境准备，不需要安装运行依赖。
+
+4. 手动做一次错误答案测试
+
+在终端执行：
+
+cp manual-run/ten/Answers.txt manual-run/ten/StudentAnswers.txt
+open -a TextEdit manual-run/ten/StudentAnswers.txt
+
+把第 2、5 行题号后的答案改成 999999，保存文本，不改变题号。
+运行：
+
+python3 Myapp.py -e manual-run/ten/Exercises.txt -a manual-run/ten/StudentAnswers.txt --output-dir manual-run/ten
+
+预期结果：Correct: 8 (1, 3, 4, 6, 7, 8, 9, 10)，Wrong: 2 (2, 5)。
+也可以运行 python3 Myapp.py -n 10，检查缺少 -r 时是否显示帮助和错误。
+
+5. 保存自己的运行截图
+
+使用 Command+Shift+4，分别截取：
+（1）生成 10 道题并显示部分 Exercises.txt 和 Answers.txt；
+（2）把第 2、5 题改错后的批改结果；
+（3）生成 10000 道题的运行结果；
+（4）测试结束显示 OK 的结果。
+截图应来自你刚才真实运行的终端。先隐藏无关窗口和个人信息。
+已提供 reports/performance.png，它是实际基准数据生成的性能图，可直接使用。
+
+6. 理解需要讲清楚的四点
+
+（1）Fraction 为什么能避免浮点误差，以及带分数怎样显示。
+（2）生成器怎样保证每个减法和除法子表达式合法。
+（3）为什么 3+(2+1) 与 1+2+3 重复，而 1+2+3 与 3+2+1 不重复。
+（4）为什么要保留同优先级右子树的括号，以及批改时为什么按数值比较。
+对应代码分别在 quiz/model.py、quiz/generate.py 和 quiz/files.py。
+
+7. 确定老师能访问 GitHub
+
+仓库地址：https://github.com/Cy3807/SchoolWork-Arithmetic
+目前为私有仓库，仅有链接并不意味着老师能访问。
+如课程要求公开源码，审核仓库内容后，在 GitHub 仓库 Settings -> General -> Danger Zone 中找到 Change repository visibility，按提示改为 Public。
+公开后用未登录窗口打开仓库链接，确认代码和 README 能访问。
+如果必须保持私有，按老师指定方式邀请其 GitHub 账号或提交源码压缩包。
+不需要重新创建仓库，也不用把 GitHub token 或账户密码放入文件。
+
+8. 需要 Windows exe 时
+
+打开仓库 Actions，选择一次成功的“验证程序并构建 Windows 版本”运行。
+在 Artifacts 下载 Windows-Myapp，解压后得到 Myapp.exe。
+如本地 delivery/windows/Myapp.exe 已存在，也可直接使用该文件。
+Windows 上在该文件夹打开 PowerShell，执行：
+
+.\Myapp.exe -n 10 -r 10
+.\Myapp.exe -e Exercises.txt -a Answers.txt
+
+Mac 运行 Python 版；Windows exe 需要在 Windows 系统运行。
+GitHub Actions 已安排 exe 的实际生成和批改验证，状态以对应运行记录为准。
+
+9. 发布博客
+
+进入博客园“写随笔”，使用 Markdown 编辑器。
+标题填写：软件工程结对项目 小学四则运算题目生成与自动批改。
+把审核补充好的 docs/博客草稿.md 内容复制到正文。
+上传 reports/performance.png 到博客园，并用编辑器返回的图片地址替换草稿中的 ../reports/performance.png。
+上传你第 5 步截取的运行截图，放在“测试结果”附近。
+预览，检查表格、代码块、图片和仓库链接。
+搜索“待填写”，确保所有个人信息和真实记录已补充；删除不适用的独立/结对备选说明。
+确认后由你点击发布，并复制文章永久链接。
+
+10. 提交补做
+
+如果老师重新开放了作业页面：进入作业，选择“提交作业”，选择刚发布的博客，确认提交，并检查列表是否出现你的记录。
+如果老师指定其他方式：按约定提供博客链接、仓库链接，以及需要的源码压缩包或 Windows 程序。
+原题两人只需一人提交，博客开头列出两人姓名学号。
+博客发布、GitHub 上传与课程补交是不同环节；按老师确认的渠道完成最后一步。
+
+11. 将自己补充的内容保存回仓库
+
+如果只修改了博客草稿，可在终端执行：
+
+git add docs/博客草稿.md
+git commit -m '补充本人信息、实际时间和补做复核记录'
+git push
+
+如你也修改了其他文件，逐个确认后按文件名添加，不使用不经检查的全量添加。
+docs/博客草稿.txt 是初始纯文本副本，修改 Markdown 后可自行同步；不要再次运行 tools/report.py 覆盖已填写的个人内容。
+
+主要文件：
+README.md：运行说明。
+docs/博客草稿.md：博客技术正文及个人信息待填写项。
+docs/PSP待填写.txt：时间表说明。
+docs/本地验证记录.md：本地测试与性能实测。
+reports/performance.png：性能分析图。
+reports/tests.txt：自动测试原始结果。

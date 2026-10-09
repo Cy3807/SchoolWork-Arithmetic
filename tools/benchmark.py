@@ -1,6 +1,7 @@
 """同候选序列对照查重方式，测生成、写入、批改并保存剖析数据。"""
 
 import cProfile
+import hashlib
 import json
 import platform
 import pstats
@@ -18,6 +19,7 @@ from quiz.generate import generate
 
 
 def main():
+    measurement_started = perf_counter()
     reports = ROOT / "reports"
     reports.mkdir(exist_ok=True)
     sizes, seed, limit, repeats = (100, 1000, 10000), 20261009, 10, 3
@@ -81,7 +83,12 @@ def main():
         "python": sys.version, "platform": platform.platform(),
         "machine": platform.machine(), "processor": platform.processor(),
         "seed": seed, "range_exclusive": limit, "repeats": repeats,
+        "source_sha256": {
+            str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in [ROOT / "Myapp.py", *sorted((ROOT / "quiz").glob("*.py"))]
+        },
         "scope": "纯生成含去重，不含文件输出；三次取中位数；列表为对照基线，非历史版本",
+        "measurement_seconds": perf_counter() - measurement_started,
         "rows": rows, "hotspots": hotspots[:8],
         "end_to_end": {
             "count": 10000, "attempts": batch.attempts,

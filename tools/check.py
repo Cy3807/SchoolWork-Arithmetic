@@ -1,6 +1,7 @@
 """运行全部测试并保存可核查的 JSON 与文本结果。"""
 
 import io
+import hashlib
 import json
 import platform
 import sys
@@ -41,6 +42,11 @@ def main():
         "failures": [(test.id(), error) for test, error in result.failures],
         "errors": [(test.id(), error) for test, error in result.errors],
         "successful": result.wasSuccessful(),
+        "source_sha256": {
+            str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in [ROOT / "Myapp.py", *sorted((ROOT / "quiz").glob("*.py")),
+                         *sorted((ROOT / "tests").glob("*.py"))]
+        },
     }
     (reports / "tests.json").write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(log)

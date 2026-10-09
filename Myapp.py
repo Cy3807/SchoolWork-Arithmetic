@@ -21,6 +21,11 @@ def positive_integer(text: str) -> int:
 
 
 def main(argv=None) -> int:
+    # Windows 冻结程序在重定向输出时可能默认采用 ANSI 编码。
+    # 显式设置标准流，使中文提示在终端和日志中都能安全输出。
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
     parser = argparse.ArgumentParser(description="小学四则运算题目生成与自动批改")
     parser.add_argument("-n", type=positive_integer, help="题目数量，默认 10")
     parser.add_argument("-r", type=positive_integer, help="操作数与分母的上限，不含上限")

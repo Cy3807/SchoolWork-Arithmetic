@@ -1,3 +1,4 @@
+test_ascii_environment_still_prints_chinese (test_quiz.CommandLineTests) ... ok
 test_capacity_failure_does_not_overwrite_existing_files (test_quiz.CommandLineTests) ... ok
 test_default_current_directory_and_grading (test_quiz.CommandLineTests) ... ok
 test_invalid_cli_parameters (test_quiz.CommandLineTests) ... ok
@@ -37,6 +38,6 @@ test_number_formats (test_quiz.NumberTests) ... ok
 test_output_formats (test_quiz.NumberTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 37 tests in 8.541s
+Ran 38 tests in 8.584s
 
 OK

@@ -1,7 +1,7 @@
 """功能、边界、命令行及规模测试；全部使用标准库 unittest。"""
 
-import random
 import re
+import os
 import subprocess
 import sys
 import tempfile
@@ -66,7 +66,8 @@ def verify_tree(test, expression, limit):
     if not expression.op:
         test.assertGreaterEqual(expression.value, 0)
         test.assertLess(expression.value, limit)
-        test.assertLess(expression.value.denominator, limit)
+        if expression.value.denominator > 1:
+            test.assertLess(expression.value.denominator, limit)
         return 0
     count = 1 + verify_tree(test, expression.left, limit) + verify_tree(test, expression.right, limit)
     if expression.op == "-":
@@ -183,6 +184,8 @@ class GeneratorTests(unittest.TestCase):
         batch = generate(len(space), 1, 0)
         self.assertEqual(len({e.key() for e in batch.expressions}), len(space))
         self.assertTrue(all(e.value == 0 for e in batch.expressions))
+        for expression in batch.expressions:
+            self.assertTrue(1 <= verify_tree(self, expression, 1) <= 3)
         with self.assertRaisesRegex(ValueError, "最多"):
             generate(len(space) + 1, 1)
 
@@ -276,6 +279,15 @@ class CommandLineTests(unittest.TestCase):
         self.assertEqual(result.returncode, 2)
         self.assertIn("usage:", result.stderr)
         self.assertIn("-r", result.stderr)
+
+    def test_ascii_environment_still_prints_chinese(self):
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "Myapp.py"), "-n", "10", "-r", "10"],
+            cwd=self.directory, capture_output=True, text=True, encoding="utf-8",
+            env={**os.environ, "PYTHONIOENCODING": "ascii"}, timeout=20,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("已生成", result.stdout)
 
     def test_invalid_cli_parameters(self):
         for arguments in (("-r", "0"), ("-r", "abc"), ("-n", "0", "-r", "10"),
