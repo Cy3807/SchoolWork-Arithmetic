@@ -42,6 +42,9 @@ def main():
         axes[1].text(value, index, f"  {value:.3f}", va="center", fontsize=9)
     figure.savefig(ROOT / "reports/performance.png", dpi=180, facecolor="white")
     figure.savefig(ROOT / "reports/performance.svg", facecolor="white")
+    svg_path = ROOT / "reports/performance.svg"
+    svg_path.write_text("\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+                        encoding="utf-8")
     print(ROOT / "reports/performance.png")
 
 
