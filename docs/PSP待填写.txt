@@ -1,0 +1,24 @@
+PSP2.1 表格（单位：分钟）
+本表记录学生本人和搭档实际投入，不使用其他同学的数据或自动化运行时长代替。
+尚未开始的学习、复核及报告工作可先估时，再记录实际值。
+已由工具协助完成且没有事前估时的部分，可写“未事前估计”，并据实说明补做情况。
+
+阶段 | 工作内容 | 预估耗时 | 实际耗时
+Planning | 计划 | 待填写 | 待填写
+Estimate | 估计任务所需时间 | 待填写 | 待填写
+Development | 开发 | 下列开发项之和 | 下列开发项之和
+Analysis | 需求分析与学习 | 待填写 | 待填写
+Design Spec | 生成设计文档 | 待填写 | 待填写
+Design Review | 设计复审 | 待填写 | 待填写
+Coding Standard | 代码规范 | 待填写 | 待填写
+Design | 具体设计 | 待填写 | 待填写
+Coding | 具体编码或工具生成后的修改 | 待填写 | 待填写
+Code Review | 代码复审 | 待填写 | 待填写
+Test | 实际运行与测试 | 待填写 | 待填写
+Reporting | 报告 | 下列报告项之和 | 下列报告项之和
+Test Report | 测试报告 | 待填写 | 待填写
+Size Measurement | 计算工作量 | 待填写 | 待填写
+Postmortem & Process Improvement Plan | 总结与改进计划 | 待填写 | 待填写
+合计 | Planning + Development + Reporting | 待填写 | 待填写
+
+注意：Planning 与 Estimate 是总项和子项，不重复相加。其余总项同理。
