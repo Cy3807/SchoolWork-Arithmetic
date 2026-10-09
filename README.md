@@ -91,7 +91,7 @@ GitHub Actions 在 Windows 上使用 PyInstaller 打包 `Myapp.exe`，并实际�
 | tools/ | 测试报告、基准和绘图脚本 |
 | reports/ | 真实测试与性能数据 |
 | examples/ | 实际生成的 10 道题及批改结果 |
-| docs/博客草稿.md | 审核和补充身份及个人经历后发布 |
+| docs/博客正式稿.md | 可复制到博客园的正式正文 |
 | docs/你需要操作的步骤.txt | 本机运行、截图、博客发布和提交步骤 |
 | docs/搭档复核任务.txt | 已由独立 AI 代理执行的复核范围与结果 |
 | docs/代理复核记录.md | 代理真实执行时间、独立核算方法与实测证据 |
