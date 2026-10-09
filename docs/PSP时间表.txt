@@ -1,0 +1,30 @@
+PSP 时间表（单位：分钟）
+
+PSP 是 Personal Software Process，即个人软件过程。
+时间表将需求分析、设计、代码复核、测试和报告整理分开，便于比较预估和投入工作量。
+以下按本项目内容给出大致估算，并非逐项计时记录。
+预估合计 180 分钟；投入时间参考值合计 200 分钟，约 3 小时 20 分钟。
+
+阶段 | 工作内容 | 预估耗时 | 投入耗时（估算）
+Planning | 计划 | 10 | 10
+Estimate | 估计任务所需时间 | 10 | 10
+Development | 开发与复核 | 140 | 155
+Analysis | 需求分析与学习 | 25 | 30
+Design Spec | 设计文档 | 10 | 10
+Design Review | 设计复审 | 10 | 10
+Coding Standard | 检查代码规范 | 5 | 5
+Design | 具体设计及改进分析 | 15 | 15
+Coding | 代码理解与修改 | 25 | 30
+Code Review | 代码复审 | 20 | 20
+Test | 运行与测试 | 30 | 35
+Reporting | 报告 | 30 | 35
+Test Report | 测试报告 | 15 | 20
+Size Measurement | 计算工作量 | 5 | 5
+Postmortem & Process Improvement Plan | 总结与改进计划 | 10 | 10
+合计 | Planning + Development + Reporting | 180 | 200
+
+Planning 与 Estimate 是总项和子项，不重复相加。Development、Reporting 同理。
+性能分析约按 35 分钟估算，包含运行基准、查看热点、比较查重方式和整理图表，计入相关阶段，不另加到合计之外。
+PSP 表记录工作投入；生成一万道题的程序耗时另见性能报告。
+
+分工：陈昱绰负责主体复核、必要修改、性能分析和博客整理；陈鹏旭负责三道人工验算、参数提示、错题统计与运行说明复核。
