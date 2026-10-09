@@ -207,15 +207,6 @@ Windows 安装 Python 后可把 `python3` 换成 `py -3`。仓库还提供 Windo
 
 本节描述 AI 代理之间的实现与复核配合，不将其写成人类搭档的合作经历或互评。
 
-## 参考资料
-
-以下同学博客用于了解作业展示结构，不引用其代码、PSP 时间或性能数据。
-
-- [刘俊宁、段旷卓的项目博客](https://www.cnblogs.com/mikko0615/p/23085957)
-- [胡浩东、石基业的项目博客](https://www.cnblogs.com/konglang/p/23064533)
-- [李彦峰的项目博客](https://www.cnblogs.com/00Lyf/p/23085770)
-- [刘文俊、林昕旸的项目博客](https://www.cnblogs.com/liuwenjun9/p/23084426)
-- [陈明凯、邓文炜的项目博客](https://www.cnblogs.com/kecit/p/23084378)
 '''
     (ROOT / "docs/博客草稿.md").write_text(blog, encoding="utf-8")
     (ROOT / "docs/博客草稿.txt").write_text(blog, encoding="utf-8")
