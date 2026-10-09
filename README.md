@@ -2,6 +2,8 @@
 
 软件工程结对项目。Python 命令行程序，支持自然数、分数、带分数、括号、结构去重、一万道题生成与自动批改。
 
+[下载源码、报告和 Windows 程序包](https://github.com/Cy3807/SchoolWork-Arithmetic/releases/tag/v1.0.0)。
+
 | 姓名 | 学号 |
 | --- | --- |
 | 陈昱绰 | 3123004519 |
