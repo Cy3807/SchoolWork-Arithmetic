@@ -23,7 +23,7 @@ def parse_number(text: str) -> Fraction:
     try:
         if whole is not None:
             if not 0 < int(numerator) < int(denominator):
-                raise ValueError("带分数的小数部分必须是真分数")
+                raise ValueError("带分数的分数部分必须是真分数")
             return Fraction(int(whole)) + Fraction(int(numerator), int(denominator))
         if simple_n is not None:
             return Fraction(int(simple_n), int(simple_d))

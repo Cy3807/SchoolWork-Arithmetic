@@ -147,6 +147,8 @@ result = Fraction(1, 6) + Fraction(1, 8)  # 7/24
 
 采用的措施包括集合查重、在构造节点时保存计算结果、复用子树，以及整批拼接文本后写文件。上表直接测量的是查重容器的影响，其他措施没有单独量化收益。
 
+Windows 打包验证还发现了一个兼容性问题：冻结后的程序在重定向输出时可能采用 ANSI 编码，打印中文提示会失败。修复是在入口显式把标准输出和错误输出设置为 UTF-8，并增加强制 ASCII 环境下的回归测试。对应首次失败及修复后的运行记录可在仓库 Actions 中查看。相关接口见 [Python 文本流文档](https://docs.python.org/3/library/io.html#io.TextIOWrapper.reconfigure)。
+
 ## 六 测试结果
 
 本地共运行 {tests['tests_run']} 项自动化测试，{tests['passed']} 项通过。以下将相关检查整理为 {len(test_cases)} 组场景，完整测试名与原始结果保存在 `reports/tests.txt`。

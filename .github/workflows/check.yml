@@ -46,6 +46,7 @@ jobs:
           & .\dist\Myapp.exe -e exe-smoke/Exercises.txt -a exe-smoke/Answers.txt --output-dir exe-smoke
           if ($LASTEXITCODE -ne 0) { throw '批改失败' }
           if ((Get-Content exe-smoke/Exercises.txt).Count -ne 10000) { throw '题目数量不正确' }
+          if (-not (Select-String -Path exe-smoke/Grade.txt -Pattern '^Correct: 10000 \(')) { throw '正确题数不正确' }
           if (-not (Select-String -Path exe-smoke/Grade.txt -Pattern '^Wrong: 0 \(\)$')) { throw '存在错题' }
       - uses: actions/upload-artifact@v4
         if: matrix.os == 'windows-latest' && matrix.python == '3.12'
