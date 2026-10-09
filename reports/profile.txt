@@ -1,0 +1,28 @@
+         1843270 function calls (1756402 primitive calls) in 0.352 seconds
+
+   Ordered by: cumulative time
+   List reduced from 39 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.009    0.009    0.374    0.374 generate.py:62(generate)
+54348/10914    0.021    0.000    0.310    0.000 generate.py:27(build)
+    32631    0.028    0.000    0.194    0.000 generate.py:17(random_number)
+    43348    0.009    0.000    0.105    0.000 fractions.py:356(forward)
+   151937    0.030    0.000    0.100    0.000 random.py:290(randrange)
+    97610    0.079    0.000    0.088    0.000 fractions.py:62(__new__)
+   174111    0.066    0.000    0.079    0.000 random.py:237(_randbelow_with_getrandbits)
+    27135    0.013    0.000    0.075    0.000 fractions.py:383(_add)
+    21717    0.008    0.000    0.048    0.000 model.py:75(binary)
+    10914    0.002    0.000    0.033    0.000 random.py:334(randint)
+54348/10914    0.018    0.000    0.020    0.000 model.py:54(key)
+    21377    0.008    0.000    0.017    0.000 fractions.py:584(_richcmp)
+    22174    0.004    0.000    0.015    0.000 random.py:343(choice)
+    10633    0.002    0.000    0.010    0.000 fractions.py:606(__lt__)
+    10744    0.002    0.000    0.010    0.000 fractions.py:610(__gt__)
+    64727    0.005    0.000    0.009    0.000 {built-in method builtins.isinstance}
+   300712    0.009    0.000    0.009    0.000 {method 'getrandbits' of '_random.Random' objects}
+     5639    0.003    0.000    0.007    0.000 fractions.py:391(_sub)
+     5659    0.003    0.000    0.007    0.000 fractions.py:399(_mul)
+     4915    0.002    0.000    0.006    0.000 fractions.py:405(_div)
+
+

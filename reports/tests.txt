@@ -1,0 +1,42 @@
+test_capacity_failure_does_not_overwrite_existing_files (test_quiz.CommandLineTests) ... ok
+test_default_current_directory_and_grading (test_quiz.CommandLineTests) ... ok
+test_invalid_cli_parameters (test_quiz.CommandLineTests) ... ok
+test_missing_file_returns_readable_error (test_quiz.CommandLineTests) ... ok
+test_missing_range_displays_help (test_quiz.CommandLineTests) ... ok
+test_addition_duplicate (test_quiz.ExpressionTests) ... ok
+test_ascii_division_with_spaces (test_quiz.ExpressionTests) ... ok
+test_associativity_is_not_a_duplicate_rule (test_quiz.ExpressionTests) ... ok
+test_fraction_on_divisor_side (test_quiz.ExpressionTests) ... ok
+test_multiplication_duplicate (test_quiz.ExpressionTests) ... ok
+test_nested_duplicate_from_assignment (test_quiz.ExpressionTests) ... ok
+test_noncommutative_operators (test_quiz.ExpressionTests) ... ok
+test_operator_precedence (test_quiz.ExpressionTests) ... ok
+test_parentheses (test_quiz.ExpressionTests) ... ok
+test_reject_invalid_expressions (test_quiz.ExpressionTests) ... ok
+test_render_preserves_tree_structure (test_quiz.ExpressionTests) ... ok
+test_same_answer_does_not_mean_duplicate (test_quiz.ExpressionTests) ... ok
+test_all_correct (test_quiz.FileTests) ... ok
+test_changed_answers_report_exact_indexes (test_quiz.FileTests) ... ok
+test_equivalent_unreduced_and_mixed_answers (test_quiz.FileTests) ... ok
+test_extra_answers_rejected (test_quiz.FileTests) ... ok
+test_gbk_and_utf8_bom (test_quiz.FileTests) ... ok
+test_grade_output_format (test_quiz.FileTests) ... ok
+test_malformed_exercise_rejected (test_quiz.FileTests) ... ok
+test_missing_and_blank_answers_are_wrong (test_quiz.FileTests) ... ok
+test_wrong_numbering_rejected (test_quiz.FileTests) ... ok
+test_invalid_parameters (test_quiz.GeneratorTests) ... ok
+test_limit_one_exact_capacity (test_quiz.GeneratorTests) ... ok
+test_list_and_set_have_identical_candidates (test_quiz.GeneratorTests) ... ok
+test_multiple_limits_and_seeds (test_quiz.GeneratorTests) ... ok
+test_seed_reproducibility (test_quiz.GeneratorTests) ... ok
+test_small_range_exhaustion_stops (test_quiz.GeneratorTests) ... ok
+test_ten_thousand_roundtrip_and_independent_calculation (test_quiz.GeneratorTests) ... ok
+test_exact_fraction_addition (test_quiz.NumberTests) ... ok
+test_invalid_number (test_quiz.NumberTests) ... ok
+test_number_formats (test_quiz.NumberTests) ... ok
+test_output_formats (test_quiz.NumberTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 8.541s
+
+OK

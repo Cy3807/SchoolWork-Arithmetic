@@ -1,0 +1,111 @@
+{
+  "run_at": "2026-10-09T11:01:09+08:00",
+  "python": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "machine": "arm64",
+  "processor": "arm",
+  "seed": 20261009,
+  "range_exclusive": 10,
+  "repeats": 3,
+  "scope": "纯生成含去重，不含文件输出；三次取中位数；列表为对照基线，非历史版本",
+  "rows": [
+    {
+      "count": 100,
+      "attempts": 100,
+      "list_samples_seconds": [
+        0.0015943340000000028,
+        0.0016235420000000056,
+        0.0016112090000000023
+      ],
+      "set_samples_seconds": [
+        0.0018451660000000022,
+        0.0015172499999999978,
+        0.0016471250000000062
+      ],
+      "list_median_seconds": 0.0016112090000000023,
+      "set_median_seconds": 0.0016471250000000062,
+      "speedup": 0.9781947332473226
+    },
+    {
+      "count": 1000,
+      "attempts": 1014,
+      "list_samples_seconds": [
+        0.025259250000000004,
+        0.028854374999999988,
+        0.025627416000000014
+      ],
+      "set_samples_seconds": [
+        0.01571404200000001,
+        0.019643333,
+        0.016072584
+      ],
+      "list_median_seconds": 0.025627416000000014,
+      "set_median_seconds": 0.016072584,
+      "speedup": 1.5944801408410751
+    },
+    {
+      "count": 10000,
+      "attempts": 10914,
+      "list_samples_seconds": [
+        1.273175125,
+        1.3284353750000002,
+        1.5229600409999997
+      ],
+      "set_samples_seconds": [
+        0.22114704100000004,
+        0.2331044579999999,
+        0.2279961669999997
+      ],
+      "list_median_seconds": 1.3284353750000002,
+      "set_median_seconds": 0.2279961669999997,
+      "speedup": 5.826568895783243
+    }
+  ],
+  "hotspots": [
+    {
+      "function": "generate.py:62 generate",
+      "calls": 1,
+      "primitive_calls": 1,
+      "self_seconds": 0.009262824000000001,
+      "cumulative_seconds": 0.374077625
+    },
+    {
+      "function": "generate.py:27 build",
+      "calls": 54348,
+      "primitive_calls": 10914,
+      "self_seconds": 0.021159477000000003,
+      "cumulative_seconds": 0.31006598100000005
+    },
+    {
+      "function": "generate.py:17 random_number",
+      "calls": 32631,
+      "primitive_calls": 32631,
+      "self_seconds": 0.027704318000000002,
+      "cumulative_seconds": 0.194241507
+    },
+    {
+      "function": "model.py:75 binary",
+      "calls": 21717,
+      "primitive_calls": 21717,
+      "self_seconds": 0.007976534,
+      "cumulative_seconds": 0.048311731000000004
+    },
+    {
+      "function": "model.py:54 key",
+      "calls": 54348,
+      "primitive_calls": 10914,
+      "self_seconds": 0.017969688,
+      "cumulative_seconds": 0.020340533
+    }
+  ],
+  "end_to_end": {
+    "count": 10000,
+    "attempts": 10914,
+    "generate_seconds": 0.2426196660000004,
+    "write_seconds": 0.03789124999999949,
+    "grade_seconds": 0.20364395899999987,
+    "total_seconds": 0.48415487499999976,
+    "correct": 10000,
+    "wrong": 0
+  }
+}

@@ -1,0 +1,54 @@
+name: 验证程序并构建 Windows 版本
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: "1"
+
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.9", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: 运行功能与规模测试
+        run: python tools/check.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tests-${{ matrix.os }}-${{ matrix.python }}
+          path: |
+            reports/tests.txt
+            reports/tests.json
+      - name: 构建单文件 Windows 程序
+        if: matrix.os == 'windows-latest' && matrix.python == '3.12'
+        run: |
+          python -m pip install pyinstaller
+          python -m PyInstaller --clean --onefile --name Myapp Myapp.py
+      - name: 验证 Windows 可执行文件生成与批改一万道题
+        if: matrix.os == 'windows-latest' && matrix.python == '3.12'
+        shell: pwsh
+        run: |
+          & .\dist\Myapp.exe -n 10000 -r 10 --seed 20261009 --output-dir exe-smoke
+          if ($LASTEXITCODE -ne 0) { throw '生成失败' }
+          & .\dist\Myapp.exe -e exe-smoke/Exercises.txt -a exe-smoke/Answers.txt --output-dir exe-smoke
+          if ($LASTEXITCODE -ne 0) { throw '批改失败' }
+          if ((Get-Content exe-smoke/Exercises.txt).Count -ne 10000) { throw '题目数量不正确' }
+          if (-not (Select-String -Path exe-smoke/Grade.txt -Pattern '^Wrong: 0 \(\)$')) { throw '存在错题' }
+      - uses: actions/upload-artifact@v4
+        if: matrix.os == 'windows-latest' && matrix.python == '3.12'
+        with:
+          name: Windows-Myapp
+          path: dist/Myapp.exe
